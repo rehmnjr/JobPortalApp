@@ -5,13 +5,11 @@ export const JobContext = createContext();
 
 export const JobProvider = ({ children }) => {
   const [flag, setFlag] = useState(() => {
-   
     const saved = localStorage.getItem('showCreateJob');
-    return saved === 'true'; 
+    return saved === 'true';
   });
 
   useEffect(() => {
-    
     localStorage.setItem('showCreateJob', flag);
   }, [flag]);
 
