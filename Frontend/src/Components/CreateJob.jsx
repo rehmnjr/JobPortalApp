@@ -46,7 +46,7 @@ const CreateJob = () => {
 
     const postData = async () => {
         try {
-            const response = await fetch("http://localhost:4001/jobs", {
+            const response = await fetch("https://jobportalbackend-fmvx.onrender.com/jobs", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

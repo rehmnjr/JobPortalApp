@@ -14,7 +14,7 @@ const JobList = () => {
       try {
         setLoading(true);
   
-        const response = await fetch('http://localhost:4001/jobs'); 
+        const response = await fetch('https://jobportalbackend-fmvx.onrender.com/jobs'); 
         if (!response.ok) {
          
           const errorText = await response.text();
