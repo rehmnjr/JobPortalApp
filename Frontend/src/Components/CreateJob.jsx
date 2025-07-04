@@ -75,11 +75,16 @@ const CreateJob = () => {
         
         for (const [key, value] of Object.entries(formData)) {
             if (value === "" || value === null || value === undefined) {
+                alert(`Please fill in the '${key}' field.`)
                 console.error(`Validation Error: Please fill in the '${key}' field.`);
                 return;
             }
         }
         await postData();
+        setFlag(false);
+        setTimeout(() => {
+          window.location.reload();
+        }, 100);
     };
 
     return (
