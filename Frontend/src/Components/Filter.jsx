@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useCallback } from "react";
+import React, { useContext, useState, useCallback } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { CiLocationOn } from "react-icons/ci";
 import { GoPerson } from "react-icons/go";
