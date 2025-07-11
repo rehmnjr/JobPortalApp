@@ -13,15 +13,7 @@ const CustomSlider = ({ value, onChange }) => {
 
   return (
     <div className="slidecontainer">
-      <input
-        type="range"
-        ref={sliderRef}
-        min="0"
-        max="2000"
-        step="1"
-        value={value}
-        onChange={(e) => onChange(Number(e.target.value))}
-        className="slider"
+      <input type="range" ref={sliderRef} min="0" max="2000" step="1" value={value} onChange={(e) => onChange(Number(e.target.value))} className="slider"
       />
     </div>
   );

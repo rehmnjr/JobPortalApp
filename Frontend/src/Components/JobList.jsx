@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ApplyBtn from './ui/ApplyButton';
 import { BsPersonPlus } from "react-icons/bs";
 import { HiMiniBuildingOffice2 } from "react-icons/hi2";
 import { RxLayers } from "react-icons/rx";
+import { FilterContext } from '../Context/FilterContext';
 
 const JobList = () => {
   const [jobs, setJobs] = useState([]); 
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);
-
+  const {filterData} = useContext(FilterContext);
   useEffect(() => {
     const fetchJobs = async () => {
       try {
@@ -30,8 +31,13 @@ const JobList = () => {
       }
     };
 
-    fetchJobs();
-  }, []); 
+    if(!filterData){
+        fetchJobs();
+      }else{
+        setJobs(filterData)
+      }
+
+  }, [filterData]); 
 
   
   const timeAgo = (dateString) => {

@@ -9,12 +9,13 @@ export const JobProvider = ({ children }) => {
     return saved === 'true';
   });
 
+
   useEffect(() => {
     localStorage.setItem('showCreateJob', flag);
   }, [flag]);
 
   return (
-    <JobContext.Provider value={{ flag, setFlag }}>
+    <JobContext.Provider value={{ flag, setFlag}}>
       {children}
     </JobContext.Provider>
   );
