@@ -35,7 +35,7 @@ const Filter = () => {
 
   async function fetchData(target, type) {
       try{
-        const res = await fetch('http://localhost:4001/jobs');
+        const res = await fetch('https://jobportalbackend-fmvx.onrender.com/jobs');
         if(!res.ok){
           throw new Error(`Filter Fetch error! status: ${res.status}`);
         }
