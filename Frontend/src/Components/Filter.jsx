@@ -145,13 +145,13 @@ const handleSalary = (type,val)=>{
           <option value="Internship">Internship</option>
           <option value="Fulltime">Fulltime</option>
           <option value="Contract">Contract</option>
-          <option value="Part Time">Part Time</option>
+          <option value="PartTime">Part Time</option>
         </select>
       </div>
 
       <div className="bg-gray-300 w-[1px] h-[30px]"></div>
 
-      {/* Salary Range and Autocomplete */}
+      {/* Salary Range */}
       <div className="flex flex-col items-start gap-3 max-w-fit">
         <span className="font-light flex flex-col ">
           <p>Salary Per Month {`₹ ${1} LPA - ₹ ${salary} LPA`}</p>

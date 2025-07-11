@@ -150,7 +150,7 @@ const CreateJob = () => {
                             <option value="Internship">Internship</option>
                             <option value="Fulltime">Fulltime</option>
                             <option value="Contract">Contract</option>
-                            <option value="Part-time">Part-time</option>
+                            <option value="PartTime">Part Time</option>
                         </select>
                     </div>
 
