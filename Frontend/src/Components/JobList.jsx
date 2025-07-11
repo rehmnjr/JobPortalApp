@@ -77,7 +77,7 @@ const JobList = () => {
   }
 
   if (jobs.length === 0) {
-    return <div className="text-center py-8">No jobs found. Create one!</div>;
+    return <div className="text-center py-8">No jobs found !</div>;
   }
 
 
