@@ -1,11 +1,24 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Logo from '../assets/logo.png'
 import { JobContext } from '../Context/JobContext';
 
 
 const Navbar = () => {
 const {setFlag} = useContext(JobContext);
+const [mode , setMode] = useState('light');
 
+useEffect(()=>{
+ const storedMode = localStorage.getItem('mode');
+  if (storedMode) {
+      setMode(storedMode);
+    }
+},[mode])
+
+const handleMode=()=>{
+  const newMode = mode === 'light' ? 'dark' : 'light';
+  setMode(newMode);
+  localStorage.setItem('mode', newMode);
+}
 
 const handleCreate = ()=>{
     setFlag(true);
@@ -24,6 +37,7 @@ const handleCreate = ()=>{
      <li className='font-[500] cursor-pointer hover:text-violet-800'>Find Talents</li>
      <li className='font-[500] cursor-pointer hover:text-violet-800'>About Us</li>
      <li className='font-[500] cursor-pointer hover:text-violet-800'>Testimonials</li>
+     <li onClick={handleMode}>{mode ==='light'? "Light Mode": "Dark Mode"}</li>
      <li><button onClick={handleCreate} className='bg-gradient-to-b from-[#A128FF] to-[#6100AD] p-3 px-4 rounded-4xl text-white cursor-pointer'>Create Jobs</button></li>
      </ul>
     </div>
