@@ -4,12 +4,14 @@ import { BsPersonPlus } from "react-icons/bs";
 import { HiMiniBuildingOffice2 } from "react-icons/hi2";
 import { RxLayers } from "react-icons/rx";
 import { FilterContext } from '../Context/FilterContext';
+import { ThemeContext } from '../Context/Theme';
 
 const JobList = () => {
   const [jobs, setJobs] = useState([]); 
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);
   const {filterData} = useContext(FilterContext);
+  const {theme} = useContext(ThemeContext);
   useEffect(() => {
     const fetchJobs = async () => {
       try {
@@ -84,20 +86,20 @@ const JobList = () => {
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-4 font-satoshi'>
       {jobs.map((job) => (
-        <div key={job._id} className='w-full max-w-sm rounded-2xl p-4 flex flex-col justify-between' style={{ boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px' }}>
+        <div key={job._id} className={`w-full max-w-sm rounded-2xl p-4 flex flex-col justify-between ${theme === 'light'?'':'border border-white'}`} style={{ boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px' }}>
           <div className='flex justify-between items-center mb-4'>
-            <div className='p-2 rounded-2xl flex items-center justify-center' style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' , width:'80px', height:'80px'}}>
+            <div className={`p-2 rounded-2xl flex items-center justify-center ${theme === 'light'?'':'bg-white'}`} style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' , width:'80px', height:'80px'}}>
               <img src={job.imageUrl} alt={`${job.companyName} Logo`} width={50} height={50} className="object-contain"/>
             </div>
-            <div className='bg-[#B0D9FF] rounded-[6px] px-2 py-1.5 text-[12px] max-h-fit'>
+            <div className={`bg-[#B0D9FF] rounded-[6px] px-2 py-1.5 text-[12px] max-h-fit ${theme === 'light'?'':'text-black'}`}>
               {timeAgo(job.createdTime)}
             </div>
           </div>
 
           <div className='flex flex-col gap-3 flex-grow'>
-            <p className='font-bold text-lg'>{job.jobTitle}</p>
-            <p className='text-gray-600 text-sm'>{job.companyName} - {job.location}</p>
-            <ul className='flex flex-wrap gap-x-4 gap-y-2 text-[#555555] text-sm'>
+            <p className={`font-bold text-lg ${theme === 'light'?'':'text-white'}`}>{job.jobTitle}</p>
+            <p className={`text-gray-600 text-sm ${theme === 'light'?'':'text-pink-200'}`}>{job.companyName} - {job.location}</p>
+            <ul className={`flex flex-wrap gap-x-4 gap-y-2 text-[#555555] text-sm ${theme === 'light'?'':'text-[#989898]'}`}>
               <li className='flex items-center gap-1'>
                 <BsPersonPlus size={16} />
                 <span>{job.experienceMin}-{job.experienceMax} yrs Exp</span>
@@ -111,7 +113,7 @@ const JobList = () => {
                 <span>₹{job.salaryMin}-{job.salaryMax} LPA</span>
               </li>
             </ul>
-            <p className='text-[14px] text-[#555555] mt-2 line-clamp-3'>{job.description}</p>
+            <p className={`text-[14px] text-[#555555] mt-2 line-clamp-3 ${theme === 'light'?'':'text-[#989898]'}`}>{job.description}</p>
           </div>
 
           <div className='mt-4'>

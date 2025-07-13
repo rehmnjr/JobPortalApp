@@ -4,10 +4,12 @@ import { CiLocationOn } from "react-icons/ci";
 import { GoPerson } from "react-icons/go";
 import CustomSlider from "./ui/CustomSlider";
 import { FilterContext } from "../Context/FilterContext";
+import { ThemeContext } from "../Context/Theme";
 
 const Filter = () => {
   const [salary, setSalary] = useState(1);
   const { setFilterData } = useContext(FilterContext);
+  const { theme } = useContext(ThemeContext);
 
   function debounce(func, delay) {
     let timeout;
@@ -81,7 +83,7 @@ const handleSalary = (type,val)=>{
   };
 
   return (
-    <div className="flex w-screen items-center justify-evenly shadow-md p-4">
+    <div className={`flex w-screen items-center justify-evenly shadow-md p-4 ${theme === 'light'?'':'bg-[#ffffff31] text-white'}`}>
       {/* Search by job title */}
       <div className="flex items-center gap-3 max-w-fit">
         <IoIosSearch size={22} />
@@ -90,8 +92,7 @@ const handleSalary = (type,val)=>{
           name="jobTitle"
           onChange={handleChange}
           placeholder="Search By Job Title, Role"
-          className="px-4 py-2 max-w-fit outline-none focus:outline-none focus:ring-0 focus:border-transparent"
-        />
+          className={`px-4 py-2 max-w-fit outline-none focus:outline-none focus:ring-0 focus:border-transparent ${theme === 'light'?'':'placeholder-white'}`}/>
       </div>
 
       <div className="bg-gray-300 w-[1px] h-[30px]"></div>
@@ -104,11 +105,8 @@ const handleSalary = (type,val)=>{
             onChange={getChangeVal}
             placeholder="Preferred location"
             name="location"
-            className="outline-none focus:outline-none focus:ring-0 focus:border-transparent"
-          >
-            <option defaultValue="" disabled hidden selected>
-              Preffered location
-            </option>
+            className="outline-none focus:outline-none focus:ring-0 focus:border-transparent">
+            <option defaultValue="" disabled hidden selected> Preffered location</option>
             <option value="Bangalore">Bangalore</option>
             <option value="Delhi">Delhi</option>
             <option value="Hyderabad">Hyderabad</option>
@@ -137,11 +135,8 @@ const handleSalary = (type,val)=>{
         <select
           onChange={getChangeVal}
           name="jobType"
-          className="px-4 py-2 min-w-fit text-black w-[209px] outline-none focus:outline-none focus:ring-0 focus:border-transparent"
-        >
-          <option value="" disabled hidden selected>
-            Job Type
-          </option>
+          className="px-4 py-2 min-w-fit w-[209px] outline-none focus:outline-none focus:ring-0 focus:border-transparent">
+          <option defaultvalue="" disabled hidden selected>Job Type</option>
           <option value="Internship">Internship</option>
           <option value="Fulltime">Fulltime</option>
           <option value="Contract">Contract</option>
